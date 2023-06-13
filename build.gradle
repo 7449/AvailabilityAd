@@ -1,0 +1,24 @@
+buildscript {
+    ext {
+        appcompat = "androidx.appcompat:appcompat:1.6.1"
+        material = "com.google.android.material:material:1.9.0"
+        constraintLayout = "androidx.constraintlayout:constraintlayout:2.1.4"
+
+        //https://github.com/square/leakcanary
+        leakcanary = "com.squareup.leakcanary:leakcanary-android:2.11"
+
+        //https://firebase.google.cn/docs/admob/android/quick-start
+        admob = "com.google.android.gms:play-services-ads:22.1.0"
+
+        //https://developers.facebook.com/docs/audience-network/setting-up/platform-setup/android/get-started
+        audience = "com.facebook.android:audience-network-sdk:6.14.0"
+
+        //https://dash.applovin.com/documentation/mediation/manual-integration-android
+        max = "com.applovin:applovin-sdk:11.10.1"
+    }
+}
+plugins {
+    id 'com.android.application' version '8.0.2' apply false
+    id 'com.android.library' version '8.0.2' apply false
+    id 'org.jetbrains.kotlin.android' version '1.8.20' apply false
+}

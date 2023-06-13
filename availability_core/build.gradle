@@ -1,0 +1,8 @@
+plugins {
+    id 'com.android.library'
+    id 'org.jetbrains.kotlin.android'
+}
+apply from: "${rootDir.path}/gradle/script/library.gradle"
+android {
+    namespace 'com.github.availability.ad'
+}

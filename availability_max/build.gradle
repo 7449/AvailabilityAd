@@ -1,0 +1,12 @@
+plugins {
+    id 'com.android.library'
+    id 'org.jetbrains.kotlin.android'
+}
+apply from: "${rootDir.path}/gradle/script/library.gradle"
+android {
+    namespace 'com.github.availability.ad.branch.max'
+}
+dependencies {
+    compileOnly project(':availability_core')
+    compileOnly rootProject.ext.max
+}
