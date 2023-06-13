@@ -16,16 +16,16 @@ object AudienceAvailabilityAd : AvailabilityAd {
         initialize(context, testIds)
     }
 
-    override fun request(context: Context, config: AdConfig, callback: Ad.AdCallback) {
+    override fun load(context: Context, config: AdConfig, callback: Ad.AdCallback) {
         create(config).request(context, callback)
     }
 
-    override fun requestOrCache(context: Context, config: AdConfig, callback: Ad.AdCallback) {
+    override fun loadOrCache(context: Context, config: AdConfig, callback: Ad.AdCallback) {
         val cache = AdCache.getCache(config.key)
         if (cache != null) {
             callback.callback(cache)
         } else {
-            request(context, config, callback)
+            load(context, config, callback)
         }
     }
 

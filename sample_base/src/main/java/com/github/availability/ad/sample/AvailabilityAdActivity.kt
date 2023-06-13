@@ -8,7 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
 import com.github.availability.ad.AvailabilityAd
 import com.github.availability.ad.AvailabilityAd.Companion.orCache
-import com.github.availability.ad.AvailabilityAd.Companion.request
+import com.github.availability.ad.AvailabilityAd.Companion.load
 import com.github.availability.ad.config.AdConfig
 import com.github.availability.ad.core.Ad
 
@@ -66,7 +66,7 @@ abstract class AvailabilityAdActivity : AppCompatActivity(R.layout.activity_avai
     private fun requestRewardedVideo() {
         rewardedVideo.setOnClickListener {
             requestStart()
-            availabilityAd.request(this, rewardedVideoConfig) {
+            availabilityAd.load(this, rewardedVideoConfig) {
                 requestEnd(it)
                 it.orCache()?.showFullScreen(this)
             }
@@ -76,7 +76,7 @@ abstract class AvailabilityAdActivity : AppCompatActivity(R.layout.activity_avai
     private fun requestRewardedInterstitial() {
         rewardedInterstitial.setOnClickListener {
             requestStart()
-            availabilityAd.request(this, rewardedInterstitialConfig) {
+            availabilityAd.load(this, rewardedInterstitialConfig) {
                 requestEnd(it)
                 it.orCache()?.showFullScreen(this)
             }
@@ -86,7 +86,7 @@ abstract class AvailabilityAdActivity : AppCompatActivity(R.layout.activity_avai
     private fun requestAppOpenView() {
         appOpenView.setOnClickListener {
             requestStart()
-            availabilityAd.request(this, appOpenConfig) {
+            availabilityAd.load(this, appOpenConfig) {
                 requestEnd(it)
                 it.orCache()?.showFullScreen(this)
             }
@@ -96,7 +96,7 @@ abstract class AvailabilityAdActivity : AppCompatActivity(R.layout.activity_avai
     private fun requestInterstitialVideoView() {
         interstitialVideoView.setOnClickListener {
             requestStart()
-            availabilityAd.request(this, interstitialVideoConfig) {
+            availabilityAd.load(this, interstitialVideoConfig) {
                 requestEnd(it)
                 it.orCache()?.showFullScreen(this)
             }
@@ -106,7 +106,7 @@ abstract class AvailabilityAdActivity : AppCompatActivity(R.layout.activity_avai
     private fun requestInterstitialView() {
         interstitialView.setOnClickListener {
             requestStart()
-            availabilityAd.request(this, interstitialConfig) {
+            availabilityAd.load(this, interstitialConfig) {
                 requestEnd(it)
                 it.orCache()?.showFullScreen(this)
             }
@@ -116,7 +116,7 @@ abstract class AvailabilityAdActivity : AppCompatActivity(R.layout.activity_avai
     private fun requestNative() {
         nativeView.setOnClickListener {
             requestStart()
-            availabilityAd.request(this, nativeConfig) {
+            availabilityAd.load(this, nativeConfig) {
                 requestEnd(it)
                 it.orCache()?.showNative(nativeGroup)
             }
@@ -126,7 +126,7 @@ abstract class AvailabilityAdActivity : AppCompatActivity(R.layout.activity_avai
     private fun requestBannerView() {
         bannerView.setOnClickListener {
             requestStart()
-            availabilityAd.request(this, bannerConfig) {
+            availabilityAd.load(this, bannerConfig) {
                 requestEnd(it)
                 it.orCache()?.showNative(nativeGroup)
             }

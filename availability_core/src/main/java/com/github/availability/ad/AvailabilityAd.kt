@@ -8,8 +8,8 @@ import com.github.availability.ad.core.AdCache
 interface AvailabilityAd {
 
     companion object {
-        fun AvailabilityAd.request(ctx: Context, config: AdConfig, callback: (ad: Ad) -> Unit) {
-            request(ctx, config, object : Ad.AdCallback {
+        fun AvailabilityAd.load(ctx: Context, config: AdConfig, callback: (ad: Ad) -> Unit) {
+            load(ctx, config, object : Ad.AdCallback {
                 override fun callback(ad: Ad) {
                     callback.invoke(ad)
                 }
@@ -23,9 +23,9 @@ interface AvailabilityAd {
 
     fun init(context: Context, testIds: List<String> = arrayListOf())
 
-    fun request(context: Context, config: AdConfig, callback: Ad.AdCallback)
+    fun load(context: Context, config: AdConfig, callback: Ad.AdCallback)
 
-    fun requestOrCache(context: Context, config: AdConfig, callback: Ad.AdCallback)
+    fun loadOrCache(context: Context, config: AdConfig, callback: Ad.AdCallback)
 
     fun create(config: AdConfig): Ad
 
