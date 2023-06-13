@@ -22,7 +22,7 @@ internal class AdmobRewardedInterstitialAd(override val config: AdConfig) :
                 }
 
                 override fun onAdFailedToLoad(error: LoadAdError) {
-                    completed(AdResult.Failure(AdFailure(error.code, error.message)), callback, error)
+                    completed(AdResult.Failure(AdFailure(error.code, error.message)), callback)
                 }
             })
     }

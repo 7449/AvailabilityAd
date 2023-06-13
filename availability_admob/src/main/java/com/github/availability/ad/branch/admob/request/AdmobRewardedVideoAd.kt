@@ -21,7 +21,7 @@ internal class AdmobRewardedVideoAd(override val config: AdConfig) : AdmobFullSc
                 }
 
                 override fun onAdFailedToLoad(error: LoadAdError) {
-                    completed(AdResult.Failure(AdFailure(error.code, error.message)), callback, error)
+                    completed(AdResult.Failure(AdFailure(error.code, error.message)), callback)
                 }
             })
     }

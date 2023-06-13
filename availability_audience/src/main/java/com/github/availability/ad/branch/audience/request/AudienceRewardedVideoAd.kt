@@ -41,7 +41,7 @@ internal class AudienceRewardedVideoAd(override val config: AdConfig) :
                         }
 
                         override fun onRewardedVideoCompleted() {
-                            simpleRewardedCallback.rewarded(this@AudienceRewardedVideoAd, "", 0)
+                            simpleCallback.rewarded(this@AudienceRewardedVideoAd, "", 0)
                         }
 
                         override fun onRewardedVideoClosed() {

@@ -22,7 +22,7 @@ internal class AdmobAppOpenAd(override val config: AdConfig) : AdmobFullScreen<A
                 }
 
                 override fun onAdFailedToLoad(error: LoadAdError) {
-                    completed(AdResult.Failure(AdFailure(error.code, error.message)), callback, error)
+                    completed(AdResult.Failure(AdFailure(error.code, error.message)), callback)
                 }
             })
     }

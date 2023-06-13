@@ -51,7 +51,7 @@ internal class MaxInterstitialAd(override val config: AdConfig) : MaxAdCompat() 
             }
 
             override fun onAdLoadFailed(adUnitId: String, error: MaxError) {
-                completed(AdResult.Failure(AdFailure(error.code, error.message)), callback, error)
+                completed(AdResult.Failure(AdFailure(error.code, error.message)), callback)
             }
         })
         maxInterstitialAd?.loadAd()

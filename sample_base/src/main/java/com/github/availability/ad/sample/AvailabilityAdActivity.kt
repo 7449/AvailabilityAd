@@ -7,8 +7,8 @@ import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
 import com.github.availability.ad.AvailabilityAd
-import com.github.availability.ad.AvailabilityAd.Companion.orCache
 import com.github.availability.ad.AvailabilityAd.Companion.load
+import com.github.availability.ad.AvailabilityAd.Companion.orCache
 import com.github.availability.ad.config.AdConfig
 import com.github.availability.ad.core.Ad
 
@@ -40,16 +40,16 @@ abstract class AvailabilityAdActivity : AppCompatActivity(R.layout.activity_avai
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         availabilityAd.init(applicationContext, arrayListOf())
-        requestNative()
-        requestInterstitialView()
-        requestInterstitialVideoView()
-        requestAppOpenView()
-        requestBannerView()
-        requestRewardedVideo()
-        requestRewardedInterstitial()
+        loadNative()
+        loadInterstitialView()
+        loadInterstitialVideoView()
+        loadAppOpenView()
+        loadBannerView()
+        loadRewardedVideo()
+        loadRewardedInterstitial()
     }
 
-    private fun requestStart() {
+    private fun loadStart() {
         progress.isVisible = true
         resultView.text = ""
         nativeGroup.removeAllViews()
@@ -57,77 +57,77 @@ abstract class AvailabilityAdActivity : AppCompatActivity(R.layout.activity_avai
         currentAd = null
     }
 
-    private fun requestEnd(ad: Ad) {
+    private fun loadEnd(ad: Ad) {
         resultView.text = ad.toString()
         progress.isVisible = false
         currentAd = ad
     }
 
-    private fun requestRewardedVideo() {
+    private fun loadRewardedVideo() {
         rewardedVideo.setOnClickListener {
-            requestStart()
+            loadStart()
             availabilityAd.load(this, rewardedVideoConfig) {
-                requestEnd(it)
+                loadEnd(it)
                 it.orCache()?.showFullScreen(this)
             }
         }
     }
 
-    private fun requestRewardedInterstitial() {
+    private fun loadRewardedInterstitial() {
         rewardedInterstitial.setOnClickListener {
-            requestStart()
+            loadStart()
             availabilityAd.load(this, rewardedInterstitialConfig) {
-                requestEnd(it)
+                loadEnd(it)
                 it.orCache()?.showFullScreen(this)
             }
         }
     }
 
-    private fun requestAppOpenView() {
+    private fun loadAppOpenView() {
         appOpenView.setOnClickListener {
-            requestStart()
+            loadStart()
             availabilityAd.load(this, appOpenConfig) {
-                requestEnd(it)
+                loadEnd(it)
                 it.orCache()?.showFullScreen(this)
             }
         }
     }
 
-    private fun requestInterstitialVideoView() {
+    private fun loadInterstitialVideoView() {
         interstitialVideoView.setOnClickListener {
-            requestStart()
+            loadStart()
             availabilityAd.load(this, interstitialVideoConfig) {
-                requestEnd(it)
+                loadEnd(it)
                 it.orCache()?.showFullScreen(this)
             }
         }
     }
 
-    private fun requestInterstitialView() {
+    private fun loadInterstitialView() {
         interstitialView.setOnClickListener {
-            requestStart()
+            loadStart()
             availabilityAd.load(this, interstitialConfig) {
-                requestEnd(it)
+                loadEnd(it)
                 it.orCache()?.showFullScreen(this)
             }
         }
     }
 
-    private fun requestNative() {
+    private fun loadNative() {
         nativeView.setOnClickListener {
-            requestStart()
+            loadStart()
             availabilityAd.load(this, nativeConfig) {
-                requestEnd(it)
+                loadEnd(it)
                 it.orCache()?.showNative(nativeGroup)
             }
         }
     }
 
-    private fun requestBannerView() {
+    private fun loadBannerView() {
         bannerView.setOnClickListener {
-            requestStart()
+            loadStart()
             availabilityAd.load(this, bannerConfig) {
-                requestEnd(it)
+                loadEnd(it)
                 it.orCache()?.showNative(nativeGroup)
             }
         }

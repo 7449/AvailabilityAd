@@ -6,7 +6,7 @@ import android.view.View
 import android.widget.FrameLayout
 import com.github.availability.ad.debug.AdLog
 
-open class AdLifecycleView @JvmOverloads constructor(
+open class AvailabilityNativeView @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
     defStyleAttr: Int = 0,
@@ -14,8 +14,8 @@ open class AdLifecycleView @JvmOverloads constructor(
 
     companion object {
 
-        fun Ad.createLifecycleView(context: Context): AdLifecycleView {
-            return AdLifecycleView(context).registerAd(this)
+        fun Ad.createAvailabilityNativeView(context: Context): AvailabilityNativeView {
+            return AvailabilityNativeView(context).registerAd(this)
         }
 
     }
@@ -23,7 +23,7 @@ open class AdLifecycleView @JvmOverloads constructor(
     private var ad: Ad? = null
 
     fun registerAd(ad: Ad) = apply {
-        AdLog.i("AdLifecycleView Register $ad")
+        AdLog.i("AvailabilityNativeView Register $ad")
         this.ad?.destroy()
         this.ad = null
         this.ad = ad
@@ -35,7 +35,7 @@ open class AdLifecycleView @JvmOverloads constructor(
 
     override fun onDetachedFromWindow() {
         super.onDetachedFromWindow()
-        AdLog.i("AdLifecycleView Destroy $ad")
+        AdLog.i("AvailabilityNativeView Destroy $ad")
         ad?.destroy()
     }
 

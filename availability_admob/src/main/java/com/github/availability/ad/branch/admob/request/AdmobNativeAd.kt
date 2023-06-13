@@ -34,7 +34,7 @@ internal class AdmobNativeAd(override val config: AdConfig) : AdmobAdCompat<Nati
         AdLoader.Builder(context, config.id)
             .withAdListener(object : AdListener() {
                 override fun onAdFailedToLoad(error: LoadAdError) {
-                    completed(AdResult.Failure(AdFailure(error.code, error.message)), callback, error)
+                    completed(AdResult.Failure(AdFailure(error.code, error.message)), callback)
                 }
 
                 override fun onAdClicked() {

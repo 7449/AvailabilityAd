@@ -7,7 +7,7 @@ import com.github.availability.ad.config.AdConfig
 import com.github.availability.ad.config.AdFailure
 import com.github.availability.ad.config.AdResult
 import com.github.availability.ad.core.Ad
-import com.github.availability.ad.core.AdLifecycleView.Companion.createLifecycleView
+import com.github.availability.ad.core.AvailabilityNativeView.Companion.createAvailabilityNativeView
 import com.google.android.gms.ads.AdListener
 import com.google.android.gms.ads.AdSize
 import com.google.android.gms.ads.AdView
@@ -17,7 +17,7 @@ internal class AdmobBannerAd(override val config: AdConfig) : AdmobAdCompat<AdVi
 
     private fun adListener(result: Ad.AdCallback, adView: AdView) = object : AdListener() {
         override fun onAdFailedToLoad(error: LoadAdError) {
-            completed(AdResult.Failure(AdFailure(error.code, error.message)), result, error)
+            completed(AdResult.Failure(AdFailure(error.code, error.message)), result)
         }
 
         override fun onAdLoaded() {
@@ -41,7 +41,7 @@ internal class AdmobBannerAd(override val config: AdConfig) : AdmobAdCompat<AdVi
     override fun showNative(rootView: ViewGroup) {
         val bannerView = valueOrNull ?: return
         bannerView.onPaidEventListener = paidEvent
-        rootView.addView(createLifecycleView(rootView.context).addViews(bannerView))
+        rootView.addView(createAvailabilityNativeView(rootView.context).addViews(bannerView))
     }
 
     override fun destroy() {

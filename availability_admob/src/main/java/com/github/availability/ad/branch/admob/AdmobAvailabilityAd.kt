@@ -26,10 +26,7 @@ object AdmobAvailabilityAd : AvailabilityAd {
     }
 
     override fun init(context: Context, testIds: List<String>) {
-        initGoogleAds(
-            context.applicationContext,
-            testIds
-        )
+        initGoogleAds(context, testIds)
     }
 
     override fun load(context: Context, config: AdConfig, callback: Ad.AdCallback) {

@@ -48,7 +48,7 @@ internal abstract class AdmobFullScreen<AD> : AdmobAdCompat<AD>() {
                 it.onPaidEventListener = paidEvent
                 it.fullScreenContentCallback = fullScreenCallback
                 it.show(activity) {
-                    simpleRewardedCallback.rewarded(this, it.type, it.amount)
+                    simpleCallback.rewarded(this, it.type, it.amount)
                 }
             }
 
@@ -56,7 +56,7 @@ internal abstract class AdmobFullScreen<AD> : AdmobAdCompat<AD>() {
                 it.onPaidEventListener = paidEvent
                 it.fullScreenContentCallback = fullScreenCallback
                 it.show(activity) {
-                    simpleRewardedCallback.rewarded(this, it.type, it.amount)
+                    simpleCallback.rewarded(this, it.type, it.amount)
                 }
             }
         }

@@ -51,11 +51,11 @@ internal class MaxRewardedAd(override val config: AdConfig) : MaxAdCompat() {
             }
 
             override fun onAdLoadFailed(adUnitId: String, error: MaxError) {
-                completed(AdResult.Failure(AdFailure(error.code, error.message)), callback, error)
+                completed(AdResult.Failure(AdFailure(error.code, error.message)), callback)
             }
 
             override fun onUserRewarded(ad: MaxAd, reward: MaxReward) {
-                simpleRewardedCallback.rewarded(this@MaxRewardedAd, reward.label, reward.amount)
+                simpleCallback.rewarded(this@MaxRewardedAd, reward.label, reward.amount)
             }
         })
         maxRewardedAd?.loadAd()

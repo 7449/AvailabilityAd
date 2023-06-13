@@ -9,13 +9,13 @@ import com.facebook.ads.AdOptionsView
 import com.facebook.ads.NativeAd
 import com.facebook.ads.NativeAdBase
 import com.github.availability.ad.branch.audience.databinding.LayoutAudienceNativeAdBinding
-import com.github.availability.ad.core.AdLifecycleView
+import com.github.availability.ad.core.AvailabilityNativeView
 
 internal class NativeAdView @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
     defStyleAttr: Int = 0,
-) : AdLifecycleView(context, attrs, defStyleAttr) {
+) : AvailabilityNativeView(context, attrs, defStyleAttr) {
 
     private val viewBinding =
         LayoutAudienceNativeAdBinding.inflate(LayoutInflater.from(getContext()), this, true)

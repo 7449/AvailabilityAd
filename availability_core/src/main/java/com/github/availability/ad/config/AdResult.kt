@@ -31,10 +31,6 @@ sealed class AdResult {
         return if (this is Failure) immutable as AdFailure else null
     }
 
-    fun anyOrNull(): Any? {
-        return valueOrNull() ?: failureOrNull()
-    }
-
     @CallSuper
     open fun destroy() {
         AdLog.i("AdValueDestroy")

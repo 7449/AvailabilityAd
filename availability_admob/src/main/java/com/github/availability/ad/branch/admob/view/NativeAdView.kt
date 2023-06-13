@@ -8,7 +8,7 @@ import android.widget.ImageView
 import android.widget.RatingBar
 import android.widget.TextView
 import com.github.availability.ad.branch.admob.R
-import com.github.availability.ad.core.AdLifecycleView
+import com.github.availability.ad.core.AvailabilityNativeView
 import com.google.android.gms.ads.nativead.NativeAd
 import com.google.android.gms.ads.nativead.NativeAdView
 
@@ -16,7 +16,7 @@ internal class NativeAdView @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
     defStyleAttr: Int = 0,
-) : AdLifecycleView(context, attrs, defStyleAttr) {
+) : AvailabilityNativeView(context, attrs, defStyleAttr) {
 
     private val adView by lazy { findViewById<NativeAdView>(R.id.native_view) }
 

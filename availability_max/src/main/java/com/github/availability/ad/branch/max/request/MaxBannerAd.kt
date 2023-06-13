@@ -10,7 +10,7 @@ import com.github.availability.ad.config.AdConfig
 import com.github.availability.ad.config.AdFailure
 import com.github.availability.ad.config.AdResult
 import com.github.availability.ad.core.Ad
-import com.github.availability.ad.core.AdLifecycleView.Companion.createLifecycleView
+import com.github.availability.ad.core.AvailabilityNativeView.Companion.createAvailabilityNativeView
 
 internal class MaxBannerAd(override val config: AdConfig) : MaxAdCompat() {
 
@@ -31,7 +31,7 @@ internal class MaxBannerAd(override val config: AdConfig) : MaxAdCompat() {
             }
 
             override fun onAdLoadFailed(adUnitId: String, error: MaxError) {
-                completed(AdResult.Failure(AdFailure(error.code, error.message)), callback, error)
+                completed(AdResult.Failure(AdFailure(error.code, error.message)), callback)
             }
         })
         maxAdView?.loadAd()
@@ -39,7 +39,7 @@ internal class MaxBannerAd(override val config: AdConfig) : MaxAdCompat() {
 
     override fun showNative(rootView: ViewGroup) {
         val maxAdView = maxAdView ?: return
-        rootView.addView(createLifecycleView(rootView.context).addViews(maxAdView))
+        rootView.addView(createAvailabilityNativeView(rootView.context).addViews(maxAdView))
     }
 
     override fun destroy() {

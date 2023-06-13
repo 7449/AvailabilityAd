@@ -46,7 +46,7 @@ internal class AudienceRewardedInterstitialAd(override val config: AdConfig) :
                         }
 
                         override fun onRewardedInterstitialCompleted() {
-                            simpleRewardedCallback.rewarded(
+                            simpleCallback.rewarded(
                                 this@AudienceRewardedInterstitialAd,
                                 "",
                                 0
