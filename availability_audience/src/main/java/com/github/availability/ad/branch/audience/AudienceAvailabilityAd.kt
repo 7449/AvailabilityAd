@@ -6,6 +6,7 @@ import com.facebook.ads.AudienceNetworkAds
 import com.github.availability.ad.AvailabilityAd
 import com.github.availability.ad.branch.audience.request.AdManager
 import com.github.availability.ad.config.AdConfig
+import com.github.availability.ad.config.cacheKey
 import com.github.availability.ad.core.Ad
 import com.github.availability.ad.core.AdCache
 import com.github.availability.ad.debug.AdDebug
@@ -21,7 +22,7 @@ object AudienceAvailabilityAd : AvailabilityAd {
     }
 
     override fun loadOrCache(context: Context, config: AdConfig, callback: Ad.Callback) {
-        val cache = AdCache.getCache(config.key)
+        val cache = AdCache.getCache(config.cacheKey())
         if (cache != null) {
             callback.callback(cache)
         } else {

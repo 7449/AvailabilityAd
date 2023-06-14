@@ -36,7 +36,7 @@ class SimpleAdCallback(
 
     override fun onRewarded(ad: Ad, type: String, amount: Int) {
         super.onRewarded(ad, type, amount)
-        AdLog.i("rewarded")
+        AdLog.i("onRewarded")
         callback.invoke()?.onRewarded(ad, type, amount)
     }
 

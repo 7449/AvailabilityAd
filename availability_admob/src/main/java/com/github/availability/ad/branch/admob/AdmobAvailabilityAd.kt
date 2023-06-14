@@ -5,6 +5,7 @@ import android.os.Bundle
 import com.github.availability.ad.AvailabilityAd
 import com.github.availability.ad.branch.admob.request.AdManager
 import com.github.availability.ad.config.AdConfig
+import com.github.availability.ad.config.cacheKey
 import com.github.availability.ad.core.Ad
 import com.github.availability.ad.core.AdCache
 import com.github.availability.ad.debug.AdDebug
@@ -35,7 +36,7 @@ object AdmobAvailabilityAd : AvailabilityAd {
     }
 
     override fun loadOrCache(context: Context, config: AdConfig, callback: Ad.Callback) {
-        val cache = AdCache.getCache(config.key)
+        val cache = AdCache.getCache(config.cacheKey())
         if (cache == null) {
             load(context, config, callback)
         } else {

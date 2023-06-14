@@ -2,6 +2,8 @@ package com.github.availability.ad
 
 import android.content.Context
 import com.github.availability.ad.config.AdConfig
+import com.github.availability.ad.config.cacheKey
+import com.github.availability.ad.config.cacheKeyNotEmpty
 import com.github.availability.ad.core.Ad
 import com.github.availability.ad.core.AdCache
 
@@ -17,7 +19,7 @@ interface AvailabilityAd {
         }
 
         fun Ad.orCache(): Ad? {
-            return if (config.key.isNotEmpty()) AdCache.getCacheAndRemove(config.key) else this
+            return if (config.cacheKeyNotEmpty()) AdCache.getCacheAndRemove(config.cacheKey()) else this
         }
     }
 

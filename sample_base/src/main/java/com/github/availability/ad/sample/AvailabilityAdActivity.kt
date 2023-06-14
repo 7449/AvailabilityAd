@@ -11,6 +11,7 @@ import com.github.availability.ad.AvailabilityAd.Companion.load
 import com.github.availability.ad.AvailabilityAd.Companion.orCache
 import com.github.availability.ad.config.AdConfig
 import com.github.availability.ad.core.Ad
+import java.util.concurrent.TimeUnit
 
 abstract class AvailabilityAdActivity : AppCompatActivity(R.layout.activity_availability_ad) {
 
@@ -27,6 +28,7 @@ abstract class AvailabilityAdActivity : AppCompatActivity(R.layout.activity_avai
 
     private var currentAd: Ad? = null
 
+    protected val cacheMillis = TimeUnit.HOURS.toMillis(1)
     protected abstract val availabilityAd: AvailabilityAd
 
     protected abstract val bannerConfig: AdConfig
