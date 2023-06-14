@@ -9,26 +9,24 @@ import com.github.availability.ad.config.AdFailure
 
 interface Ad {
 
-    interface AdCallback {
+    interface Callback {
         fun callback(ad: Ad)
     }
-
-    val config: AdConfig
-
-    val isReady: Boolean
-
-    val repeatedlyClick: Boolean
-
-    val latencyMillis: Long
-    val expireMillis: Long
 
     val value: Any?
     val failure: AdFailure?
 
-    fun request(context: Context, callback: AdCallback)
+    val config: AdConfig
+    val isReady: Boolean
+    val repeatedlyClick: Boolean
+    val latencyMillis: Long
+    val expireMillis: Long
+
+    fun load(context: Context, callback: Callback)
     fun callback(callback: OnAdCallback)
-    fun showNative(rootView: ViewGroup) {}
-    fun showFullScreen(activity: Activity) {}
+    fun show(rootView: ViewGroup) {}
+    fun show(activity: Activity) {}
+    fun show() {}
     fun destroy()
 
 }

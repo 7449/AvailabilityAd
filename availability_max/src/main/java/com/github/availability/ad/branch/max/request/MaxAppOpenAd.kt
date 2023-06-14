@@ -17,7 +17,8 @@ internal class MaxAppOpenAd(override val config: AdConfig) : MaxAdCompat() {
 
     override val isReady get() = maxAppOpenAd?.isReady == true
 
-    override fun request(context: Context, callback: Ad.AdCallback) {
+    override fun load(context: Context, callback: Ad.Callback) {
+        super.load(context, callback)
         maxAppOpenAd = MaxAppOpenAd(config.id, context)
         maxAppOpenAd?.setRevenueListener(revenueListener(context))
         maxAppOpenAd?.setListener(object : SimpleMaxAdListener() {
@@ -30,16 +31,16 @@ internal class MaxAppOpenAd(override val config: AdConfig) : MaxAdCompat() {
             }
 
             override fun onAdDisplayed(ad: MaxAd) {
-                simpleCallback.onShowedFullScreenContent(this@MaxAppOpenAd)
+                simpleCallback.onShowedFullScreen(this@MaxAppOpenAd)
             }
 
             override fun onAdHidden(ad: MaxAd) {
-                simpleCallback.onDismissedFullScreenContent(this@MaxAppOpenAd)
+                simpleCallback.onDismissedFullScreen(this@MaxAppOpenAd)
                 destroy()
             }
 
             override fun onAdDisplayFailed(ad: MaxAd, error: MaxError) {
-                simpleCallback.onFailedToShowFullScreenContent(this@MaxAppOpenAd, error.code)
+                simpleCallback.onFailedToShowFullScreen(this@MaxAppOpenAd, error.code)
                 destroy()
             }
 
@@ -50,7 +51,7 @@ internal class MaxAppOpenAd(override val config: AdConfig) : MaxAdCompat() {
         maxAppOpenAd?.loadAd()
     }
 
-    override fun showFullScreen(activity: Activity) {
+    override fun show(activity: Activity) {
         maxAppOpenAd?.showAd()
     }
 

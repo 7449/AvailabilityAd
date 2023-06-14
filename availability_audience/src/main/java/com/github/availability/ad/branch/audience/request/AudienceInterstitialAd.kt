@@ -13,7 +13,8 @@ import com.github.availability.ad.core.Ad
 internal class AudienceInterstitialAd(override val config: AdConfig) :
     AudienceAdCompat<InterstitialAd>() {
 
-    override fun request(context: Context, callback: Ad.AdCallback) {
+    override fun load(context: Context, callback: Ad.Callback) {
+        super.load(context, callback)
         with(InterstitialAd(context, config.id)) {
             loadAd(
                 buildLoadAdConfig()
@@ -38,12 +39,12 @@ internal class AudienceInterstitialAd(override val config: AdConfig) :
                         }
 
                         override fun onInterstitialDismissed(p0: com.facebook.ads.Ad?) {
-                            simpleCallback.onDismissedFullScreenContent(this@AudienceInterstitialAd)
+                            simpleCallback.onDismissedFullScreen(this@AudienceInterstitialAd)
                             this@AudienceInterstitialAd.destroy()
                         }
 
                         override fun onInterstitialDisplayed(p0: com.facebook.ads.Ad?) {
-                            simpleCallback.onShowedFullScreenContent(this@AudienceInterstitialAd)
+                            simpleCallback.onShowedFullScreen(this@AudienceInterstitialAd)
                             simpleCallback.onPaidEvent(this@AudienceInterstitialAd, 0, "USD", "3")
                         }
                     })
@@ -52,7 +53,7 @@ internal class AudienceInterstitialAd(override val config: AdConfig) :
         }
     }
 
-    override fun showFullScreen(activity: Activity) {
+    override fun show(activity: Activity) {
         valueOrNull?.show()
     }
 

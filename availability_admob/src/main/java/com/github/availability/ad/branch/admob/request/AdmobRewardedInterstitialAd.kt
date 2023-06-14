@@ -12,7 +12,8 @@ import com.google.android.gms.ads.rewardedinterstitial.RewardedInterstitialAdLoa
 internal class AdmobRewardedInterstitialAd(override val config: AdConfig) :
     AdmobFullScreen<RewardedInterstitialAd>() {
 
-    override fun request(context: Context, callback: Ad.AdCallback) {
+    override fun load(context: Context, callback: Ad.Callback) {
+        super.load(context, callback)
         RewardedInterstitialAd.load(context, config.id,
             AdRequest(config.id),
             object : RewardedInterstitialAdLoadCallback() {

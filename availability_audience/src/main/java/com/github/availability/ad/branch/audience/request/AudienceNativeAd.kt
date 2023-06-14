@@ -13,7 +13,8 @@ import com.github.availability.ad.core.Ad
 
 internal class AudienceNativeAd(override val config: AdConfig) : AudienceAdCompat<NativeAd>() {
 
-    override fun request(context: Context, callback: Ad.AdCallback) {
+    override fun load(context: Context, callback: Ad.Callback) {
+        super.load(context, callback)
         with(NativeAd(context, config.id)) {
             loadAd(
                 buildLoadAdConfig()
@@ -46,7 +47,7 @@ internal class AudienceNativeAd(override val config: AdConfig) : AudienceAdCompa
         }
     }
 
-    override fun showNative(rootView: ViewGroup) {
+    override fun show(rootView: ViewGroup) {
         val nativeAd = valueOrNull ?: return
         val adView = NativeAdView(rootView.context).apply {
             forNativeAd(nativeAd)

@@ -68,7 +68,7 @@ abstract class AvailabilityAdActivity : AppCompatActivity(R.layout.activity_avai
             loadStart()
             availabilityAd.load(this, rewardedVideoConfig) {
                 loadEnd(it)
-                it.orCache()?.showFullScreen(this)
+                it.orCache()?.show(this)
             }
         }
     }
@@ -78,7 +78,7 @@ abstract class AvailabilityAdActivity : AppCompatActivity(R.layout.activity_avai
             loadStart()
             availabilityAd.load(this, rewardedInterstitialConfig) {
                 loadEnd(it)
-                it.orCache()?.showFullScreen(this)
+                it.orCache()?.show(this)
             }
         }
     }
@@ -88,7 +88,7 @@ abstract class AvailabilityAdActivity : AppCompatActivity(R.layout.activity_avai
             loadStart()
             availabilityAd.load(this, appOpenConfig) {
                 loadEnd(it)
-                it.orCache()?.showFullScreen(this)
+                it.orCache()?.show(this)
             }
         }
     }
@@ -98,7 +98,7 @@ abstract class AvailabilityAdActivity : AppCompatActivity(R.layout.activity_avai
             loadStart()
             availabilityAd.load(this, interstitialVideoConfig) {
                 loadEnd(it)
-                it.orCache()?.showFullScreen(this)
+                it.orCache()?.show(this)
             }
         }
     }
@@ -108,7 +108,7 @@ abstract class AvailabilityAdActivity : AppCompatActivity(R.layout.activity_avai
             loadStart()
             availabilityAd.load(this, interstitialConfig) {
                 loadEnd(it)
-                it.orCache()?.showFullScreen(this)
+                it.orCache()?.show(this)
             }
         }
     }
@@ -118,7 +118,7 @@ abstract class AvailabilityAdActivity : AppCompatActivity(R.layout.activity_avai
             loadStart()
             availabilityAd.load(this, nativeConfig) {
                 loadEnd(it)
-                it.orCache()?.showNative(nativeGroup)
+                it.orCache()?.show(nativeGroup)
             }
         }
     }
@@ -128,7 +128,7 @@ abstract class AvailabilityAdActivity : AppCompatActivity(R.layout.activity_avai
             loadStart()
             availabilityAd.load(this, bannerConfig) {
                 loadEnd(it)
-                it.orCache()?.showNative(nativeGroup)
+                it.orCache()?.show(nativeGroup)
             }
         }
     }

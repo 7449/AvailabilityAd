@@ -9,7 +9,7 @@ interface AvailabilityAd {
 
     companion object {
         fun AvailabilityAd.load(ctx: Context, config: AdConfig, callback: (ad: Ad) -> Unit) {
-            load(ctx, config, object : Ad.AdCallback {
+            load(ctx, config, object : Ad.Callback {
                 override fun callback(ad: Ad) {
                     callback.invoke(ad)
                 }
@@ -23,9 +23,9 @@ interface AvailabilityAd {
 
     fun init(context: Context, testIds: List<String> = arrayListOf())
 
-    fun load(context: Context, config: AdConfig, callback: Ad.AdCallback)
+    fun load(context: Context, config: AdConfig, callback: Ad.Callback)
 
-    fun loadOrCache(context: Context, config: AdConfig, callback: Ad.AdCallback)
+    fun loadOrCache(context: Context, config: AdConfig, callback: Ad.Callback)
 
     fun create(config: AdConfig): Ad
 

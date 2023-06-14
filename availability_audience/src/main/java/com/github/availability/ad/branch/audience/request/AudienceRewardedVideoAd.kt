@@ -13,7 +13,8 @@ import com.github.availability.ad.core.Ad
 internal class AudienceRewardedVideoAd(override val config: AdConfig) :
     AudienceAdCompat<RewardedVideoAd>() {
 
-    override fun request(context: Context, callback: Ad.AdCallback) {
+    override fun load(context: Context, callback: Ad.Callback) {
+        super.load(context, callback)
         with(RewardedVideoAd(context, config.id)) {
             loadAd(
                 buildLoadAdConfig()
@@ -36,16 +37,16 @@ internal class AudienceRewardedVideoAd(override val config: AdConfig) :
                         }
 
                         override fun onLoggingImpression(ad: com.facebook.ads.Ad) {
-                            simpleCallback.onShowedFullScreenContent(this@AudienceRewardedVideoAd)
+                            simpleCallback.onShowedFullScreen(this@AudienceRewardedVideoAd)
                             simpleCallback.onPaidEvent(this@AudienceRewardedVideoAd, 0, "USD", "3")
                         }
 
                         override fun onRewardedVideoCompleted() {
-                            simpleCallback.rewarded(this@AudienceRewardedVideoAd, "", 0)
+                            simpleCallback.onRewarded(this@AudienceRewardedVideoAd, "", 0)
                         }
 
                         override fun onRewardedVideoClosed() {
-                            simpleCallback.onDismissedFullScreenContent(this@AudienceRewardedVideoAd)
+                            simpleCallback.onDismissedFullScreen(this@AudienceRewardedVideoAd)
                             this@AudienceRewardedVideoAd.destroy()
                         }
                     })
@@ -54,7 +55,7 @@ internal class AudienceRewardedVideoAd(override val config: AdConfig) :
         }
     }
 
-    override fun showFullScreen(activity: Activity) {
+    override fun show(activity: Activity) {
         valueOrNull?.show()
     }
 

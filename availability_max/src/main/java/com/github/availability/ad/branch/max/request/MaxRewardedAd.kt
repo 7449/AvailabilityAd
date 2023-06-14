@@ -20,7 +20,8 @@ internal class MaxRewardedAd(override val config: AdConfig) : MaxAdCompat() {
 
     override val isReady get() = maxRewardedAd?.isReady == true
 
-    override fun request(context: Context, callback: Ad.AdCallback) {
+    override fun load(context: Context, callback: Ad.Callback) {
+        super.load(context, callback)
         if (context !is Activity) {
             completed(AdResult.Failure(contextFailure), callback)
             return
@@ -37,16 +38,16 @@ internal class MaxRewardedAd(override val config: AdConfig) : MaxAdCompat() {
             }
 
             override fun onAdDisplayed(ad: MaxAd) {
-                simpleCallback.onShowedFullScreenContent(this@MaxRewardedAd)
+                simpleCallback.onShowedFullScreen(this@MaxRewardedAd)
             }
 
             override fun onAdHidden(ad: MaxAd) {
-                simpleCallback.onDismissedFullScreenContent(this@MaxRewardedAd)
+                simpleCallback.onDismissedFullScreen(this@MaxRewardedAd)
                 destroy()
             }
 
             override fun onAdDisplayFailed(ad: MaxAd, error: MaxError) {
-                simpleCallback.onFailedToShowFullScreenContent(this@MaxRewardedAd, error.code)
+                simpleCallback.onFailedToShowFullScreen(this@MaxRewardedAd, error.code)
                 destroy()
             }
 
@@ -55,13 +56,13 @@ internal class MaxRewardedAd(override val config: AdConfig) : MaxAdCompat() {
             }
 
             override fun onUserRewarded(ad: MaxAd, reward: MaxReward) {
-                simpleCallback.rewarded(this@MaxRewardedAd, reward.label, reward.amount)
+                simpleCallback.onRewarded(this@MaxRewardedAd, reward.label, reward.amount)
             }
         })
         maxRewardedAd?.loadAd()
     }
 
-    override fun showFullScreen(activity: Activity) {
+    override fun show(activity: Activity) {
         maxRewardedAd?.showAd()
     }
 

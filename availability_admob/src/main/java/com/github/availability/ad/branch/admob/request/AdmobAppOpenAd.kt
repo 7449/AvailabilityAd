@@ -10,7 +10,8 @@ import com.google.android.gms.ads.appopen.AppOpenAd
 
 internal class AdmobAppOpenAd(override val config: AdConfig) : AdmobFullScreen<AppOpenAd>() {
 
-    override fun request(context: Context, callback: Ad.AdCallback) {
+    override fun load(context: Context, callback: Ad.Callback) {
+        super.load(context, callback)
         AppOpenAd.load(
             context,
             config.id,

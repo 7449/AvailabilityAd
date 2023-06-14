@@ -30,7 +30,8 @@ internal class AdmobNativeAd(override val config: AdConfig) : AdmobAdCompat<Nati
             .build()
     }
 
-    override fun request(context: Context, callback: Ad.AdCallback) {
+    override fun load(context: Context, callback: Ad.Callback) {
+        super.load(context, callback)
         AdLoader.Builder(context, config.id)
             .withAdListener(object : AdListener() {
                 override fun onAdFailedToLoad(error: LoadAdError) {
@@ -46,7 +47,7 @@ internal class AdmobNativeAd(override val config: AdConfig) : AdmobAdCompat<Nati
             .loadAd(AdRequest(config.id))
     }
 
-    override fun showNative(rootView: ViewGroup) {
+    override fun show(rootView: ViewGroup) {
         val nativeAd = valueOrNull ?: return
         nativeAd.setOnPaidEventListener(paidEvent)
         rootView.addView(NativeAdView(rootView.context).forNativeAd(nativeAd).registerAd(this))

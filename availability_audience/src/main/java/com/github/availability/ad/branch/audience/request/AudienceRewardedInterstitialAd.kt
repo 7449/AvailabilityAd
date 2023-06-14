@@ -13,7 +13,8 @@ import com.github.availability.ad.core.Ad
 internal class AudienceRewardedInterstitialAd(override val config: AdConfig) :
     AudienceAdCompat<RewardedInterstitialAd>() {
 
-    override fun request(context: Context, callback: Ad.AdCallback) {
+    override fun load(context: Context, callback: Ad.Callback) {
+        super.load(context, callback)
         with(RewardedInterstitialAd(context, config.id)) {
             loadAd(
                 buildLoadAdConfig()
@@ -36,7 +37,7 @@ internal class AudienceRewardedInterstitialAd(override val config: AdConfig) :
                         }
 
                         override fun onLoggingImpression(ad: com.facebook.ads.Ad) {
-                            simpleCallback.onShowedFullScreenContent(this@AudienceRewardedInterstitialAd)
+                            simpleCallback.onShowedFullScreen(this@AudienceRewardedInterstitialAd)
                             simpleCallback.onPaidEvent(
                                 this@AudienceRewardedInterstitialAd,
                                 0,
@@ -46,7 +47,7 @@ internal class AudienceRewardedInterstitialAd(override val config: AdConfig) :
                         }
 
                         override fun onRewardedInterstitialCompleted() {
-                            simpleCallback.rewarded(
+                            simpleCallback.onRewarded(
                                 this@AudienceRewardedInterstitialAd,
                                 "",
                                 0
@@ -54,7 +55,7 @@ internal class AudienceRewardedInterstitialAd(override val config: AdConfig) :
                         }
 
                         override fun onRewardedInterstitialClosed() {
-                            simpleCallback.onDismissedFullScreenContent(this@AudienceRewardedInterstitialAd)
+                            simpleCallback.onDismissedFullScreen(this@AudienceRewardedInterstitialAd)
                             this@AudienceRewardedInterstitialAd.destroy()
                         }
                     })
@@ -63,7 +64,7 @@ internal class AudienceRewardedInterstitialAd(override val config: AdConfig) :
         }
     }
 
-    override fun showFullScreen(activity: Activity) {
+    override fun show(activity: Activity) {
         valueOrNull?.show()
     }
 

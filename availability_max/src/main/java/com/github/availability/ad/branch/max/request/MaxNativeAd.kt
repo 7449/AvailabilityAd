@@ -35,7 +35,8 @@ internal class MaxNativeAd(override val config: AdConfig) : MaxAdCompat() {
 
     override val isReady get() = maxNativeAdView != null
 
-    override fun request(context: Context, callback: Ad.AdCallback) {
+    override fun load(context: Context, callback: Ad.Callback) {
+        super.load(context, callback)
         maxNativeAdLoader = MaxNativeAdLoader(config.id, context)
         maxNativeAdLoader?.setRevenueListener(revenueListener(context))
         maxNativeAdLoader?.setNativeAdListener(object : SimpleMaxNativeAdListener() {
@@ -59,7 +60,7 @@ internal class MaxNativeAd(override val config: AdConfig) : MaxAdCompat() {
         maxNativeAdLoader?.loadAd(maxNativeAdView(context))
     }
 
-    override fun showNative(rootView: ViewGroup) {
+    override fun show(rootView: ViewGroup) {
         val nativeAdView = maxNativeAdView ?: return
         rootView.addView(createAvailabilityNativeView(rootView.context).addViews(nativeAdView))
     }

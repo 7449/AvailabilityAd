@@ -29,12 +29,12 @@ object AdmobAvailabilityAd : AvailabilityAd {
         initGoogleAds(context, testIds)
     }
 
-    override fun load(context: Context, config: AdConfig, callback: Ad.AdCallback) {
+    override fun load(context: Context, config: AdConfig, callback: Ad.Callback) {
         create(config)
-            .request(context, callback)
+            .load(context, callback)
     }
 
-    override fun loadOrCache(context: Context, config: AdConfig, callback: Ad.AdCallback) {
+    override fun loadOrCache(context: Context, config: AdConfig, callback: Ad.Callback) {
         val cache = AdCache.getCache(config.key)
         if (cache == null) {
             load(context, config, callback)

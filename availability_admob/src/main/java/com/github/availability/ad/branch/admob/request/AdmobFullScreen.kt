@@ -16,21 +16,21 @@ internal abstract class AdmobFullScreen<AD> : AdmobAdCompat<AD>() {
         }
 
         override fun onAdDismissedFullScreenContent() {
-            simpleCallback.onDismissedFullScreenContent(this@AdmobFullScreen)
+            simpleCallback.onDismissedFullScreen(this@AdmobFullScreen)
             destroy()
         }
 
         override fun onAdFailedToShowFullScreenContent(error: AdError) {
-            simpleCallback.onFailedToShowFullScreenContent(this@AdmobFullScreen, error.code)
+            simpleCallback.onFailedToShowFullScreen(this@AdmobFullScreen, error.code)
             destroy()
         }
 
         override fun onAdShowedFullScreenContent() {
-            simpleCallback.onShowedFullScreenContent(this@AdmobFullScreen)
+            simpleCallback.onShowedFullScreen(this@AdmobFullScreen)
         }
     }
 
-    override fun showFullScreen(activity: Activity) {
+    override fun show(activity: Activity) {
         when (val fullScreen = valueOrNull) {
             is AppOpenAd -> fullScreen.let {
                 it.onPaidEventListener = paidEvent
@@ -48,7 +48,7 @@ internal abstract class AdmobFullScreen<AD> : AdmobAdCompat<AD>() {
                 it.onPaidEventListener = paidEvent
                 it.fullScreenContentCallback = fullScreenCallback
                 it.show(activity) {
-                    simpleCallback.rewarded(this, it.type, it.amount)
+                    simpleCallback.onRewarded(this, it.type, it.amount)
                 }
             }
 
@@ -56,7 +56,7 @@ internal abstract class AdmobFullScreen<AD> : AdmobAdCompat<AD>() {
                 it.onPaidEventListener = paidEvent
                 it.fullScreenContentCallback = fullScreenCallback
                 it.show(activity) {
-                    simpleCallback.rewarded(this, it.type, it.amount)
+                    simpleCallback.onRewarded(this, it.type, it.amount)
                 }
             }
         }

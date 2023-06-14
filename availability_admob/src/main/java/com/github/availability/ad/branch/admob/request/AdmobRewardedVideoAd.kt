@@ -11,7 +11,8 @@ import com.google.android.gms.ads.rewarded.RewardedAdLoadCallback
 
 internal class AdmobRewardedVideoAd(override val config: AdConfig) : AdmobFullScreen<RewardedAd>() {
 
-    override fun request(context: Context, callback: Ad.AdCallback) {
+    override fun load(context: Context, callback: Ad.Callback) {
+        super.load(context, callback)
         RewardedAd.load(context, config.id,
             AdRequest(config.id),
             object : RewardedAdLoadCallback() {

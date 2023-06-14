@@ -15,7 +15,7 @@ import com.google.android.gms.ads.LoadAdError
 
 internal class AdmobBannerAd(override val config: AdConfig) : AdmobAdCompat<AdView>() {
 
-    private fun adListener(result: Ad.AdCallback, adView: AdView) = object : AdListener() {
+    private fun adListener(result: Ad.Callback, adView: AdView) = object : AdListener() {
         override fun onAdFailedToLoad(error: LoadAdError) {
             completed(AdResult.Failure(AdFailure(error.code, error.message)), result)
         }
@@ -29,7 +29,8 @@ internal class AdmobBannerAd(override val config: AdConfig) : AdmobAdCompat<AdVi
         }
     }
 
-    override fun request(context: Context, callback: Ad.AdCallback) {
+    override fun load(context: Context, callback: Ad.Callback) {
+        super.load(context, callback)
         val adSize = if (config is AdmobAdConfig) config.bannerSize else AdSize.BANNER
         val adView = AdView(context.applicationContext)
         adView.setAdSize(adSize)
@@ -38,7 +39,7 @@ internal class AdmobBannerAd(override val config: AdConfig) : AdmobAdCompat<AdVi
         adView.adListener = adListener(callback, adView)
     }
 
-    override fun showNative(rootView: ViewGroup) {
+    override fun show(rootView: ViewGroup) {
         val bannerView = valueOrNull ?: return
         bannerView.onPaidEventListener = paidEvent
         rootView.addView(createAvailabilityNativeView(rootView.context).addViews(bannerView))

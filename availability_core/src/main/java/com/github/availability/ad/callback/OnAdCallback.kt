@@ -4,9 +4,9 @@ import com.github.availability.ad.core.Ad
 
 interface OnAdCallback {
     fun onClicked(ad: Ad)
-    fun onDismissedFullScreenContent(ad: Ad)
-    fun onFailedToShowFullScreenContent(ad: Ad, code: Int)
-    fun onShowedFullScreenContent(ad: Ad)
+    fun onDismissedFullScreen(ad: Ad)
+    fun onFailedToShowFullScreen(ad: Ad, code: Int)
+    fun onShowedFullScreen(ad: Ad)
     fun onPaidEvent(ad: Ad, micros: Long, currencyCode: String, precisionType: String)
-    fun rewarded(ad: Ad, type: String, amount: Int) {} // ignore
+    fun onRewarded(ad: Ad, type: String, amount: Int) {} // ignore
 }

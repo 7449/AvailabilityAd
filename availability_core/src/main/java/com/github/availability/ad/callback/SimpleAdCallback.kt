@@ -14,23 +14,30 @@ class SimpleAdCallback(
         callback.invoke()?.onClicked(ad)
     }
 
-    override fun onDismissedFullScreenContent(ad: Ad) {
-        AdLog.i("onDismissedFullScreenContent")
-        callback.invoke()?.onDismissedFullScreenContent(ad)
+    override fun onDismissedFullScreen(ad: Ad) {
+        AdLog.i("onDismissedFullScreen")
+        callback.invoke()?.onDismissedFullScreen(ad)
     }
 
-    override fun onFailedToShowFullScreenContent(ad: Ad, code: Int) {
-        AdLog.i("onFailedToShowFullScreenContent")
-        callback.invoke()?.onFailedToShowFullScreenContent(ad, code)
+    override fun onFailedToShowFullScreen(ad: Ad, code: Int) {
+        AdLog.i("onFailedToShowFullScreen")
+        callback.invoke()?.onFailedToShowFullScreen(ad, code)
     }
 
-    override fun onShowedFullScreenContent(ad: Ad) {
-        AdLog.i("onShowedFullScreenContent")
-        callback.invoke()?.onShowedFullScreenContent(ad)
+    override fun onShowedFullScreen(ad: Ad) {
+        AdLog.i("onShowedFullScreen")
+        callback.invoke()?.onShowedFullScreen(ad)
     }
 
     override fun onPaidEvent(ad: Ad, micros: Long, currencyCode: String, precisionType: String) {
         AdLog.i("onPaidEvent")
         callback.invoke()?.onPaidEvent(ad, micros, currencyCode, precisionType)
     }
+
+    override fun onRewarded(ad: Ad, type: String, amount: Int) {
+        super.onRewarded(ad, type, amount)
+        AdLog.i("rewarded")
+        callback.invoke()?.onRewarded(ad, type, amount)
+    }
+
 }

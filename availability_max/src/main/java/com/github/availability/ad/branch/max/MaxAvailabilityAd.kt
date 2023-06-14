@@ -16,11 +16,11 @@ object MaxAvailabilityAd : AvailabilityAd {
         initMaxAds(context, testIds)
     }
 
-    override fun load(context: Context, config: AdConfig, callback: Ad.AdCallback) {
-        create(config).request(context, callback)
+    override fun load(context: Context, config: AdConfig, callback: Ad.Callback) {
+        create(config).load(context, callback)
     }
 
-    override fun loadOrCache(context: Context, config: AdConfig, callback: Ad.AdCallback) {
+    override fun loadOrCache(context: Context, config: AdConfig, callback: Ad.Callback) {
         val cache = AdCache.getCache(config.key)
         if (cache == null) {
             load(context, config, callback)
