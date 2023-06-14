@@ -13,8 +13,8 @@ import com.github.availability.ad.core.AdCache
 
 object MaxAvailabilityAd : AvailabilityAd {
 
-    override fun init(context: Context, testIds: List<String>) {
-        initMaxAds(context, testIds)
+    override fun init(context: Context) {
+        initMaxAds(context)
     }
 
     override fun load(context: Context, config: AdConfig, callback: Ad.Callback) {
@@ -34,19 +34,12 @@ object MaxAvailabilityAd : AvailabilityAd {
         return AdManager.create(config)
     }
 
-    private fun initMaxAds(context: Context, testIds: List<String>) {
+    private fun initMaxAds(context: Context) {
         AppLovinSdk.getInstance(context).mediationProvider = AppLovinMediationProvider.MAX
-        AppLovinSdk.getInstance(context).initializeSdk {
-            setTestDevice(context, testIds)
-        }
         AppLovinPrivacySettings.setHasUserConsent(false, context)
         AppLovinPrivacySettings.setIsAgeRestrictedUser(false, context)
         AppLovinPrivacySettings.setDoNotSell(true, context)
-    }
-
-    private fun setTestDevice(context: Context, testIds: List<String>) {
-        with(AppLovinSdk.getInstance(context).settings) {
-            testDeviceAdvertisingIds.addAll(testIds)
+        AppLovinSdk.getInstance(context).initializeSdk {
         }
     }
 

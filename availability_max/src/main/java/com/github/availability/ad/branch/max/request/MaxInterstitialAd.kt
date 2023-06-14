@@ -62,6 +62,10 @@ internal class MaxInterstitialAd(override val config: AdConfig) : MaxAdCompat() 
         maxInterstitialAd?.showAd()
     }
 
+    override fun show() {
+        maxInterstitialAd?.showAd()
+    }
+
     override fun destroy() {
         maxInterstitialAd?.setListener(null)
         maxInterstitialAd?.destroy()

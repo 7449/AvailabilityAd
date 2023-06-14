@@ -41,7 +41,7 @@ abstract class AvailabilityAdActivity : AppCompatActivity(R.layout.activity_avai
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        availabilityAd.init(applicationContext, arrayListOf())
+        availabilityAd.init(applicationContext)
         loadNative()
         loadInterstitialView()
         loadInterstitialVideoView()

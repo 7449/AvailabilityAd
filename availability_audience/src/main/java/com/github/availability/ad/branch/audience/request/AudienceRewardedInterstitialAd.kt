@@ -68,6 +68,10 @@ internal class AudienceRewardedInterstitialAd(override val config: AdConfig) :
         valueOrNull?.show()
     }
 
+    override fun show() {
+        valueOrNull?.show()
+    }
+
     override fun destroy() {
         val rewardedInterstitialAd = valueOrNull
         rewardedInterstitialAd?.destroy()

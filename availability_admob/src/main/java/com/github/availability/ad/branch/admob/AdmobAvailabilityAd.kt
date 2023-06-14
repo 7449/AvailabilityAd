@@ -8,7 +8,6 @@ import com.github.availability.ad.config.AdConfig
 import com.github.availability.ad.config.cacheKey
 import com.github.availability.ad.core.Ad
 import com.github.availability.ad.core.AdCache
-import com.github.availability.ad.debug.AdDebug
 import com.google.android.gms.ads.MobileAds
 import com.google.android.gms.ads.RequestConfiguration
 import com.google.android.gms.ads.mediation.MediationExtrasReceiver
@@ -26,13 +25,12 @@ object AdmobAvailabilityAd : AvailabilityAd {
         return networkExtrasBundles
     }
 
-    override fun init(context: Context, testIds: List<String>) {
-        initGoogleAds(context, testIds)
+    override fun init(context: Context) {
+        initGoogleAds(context)
     }
 
     override fun load(context: Context, config: AdConfig, callback: Ad.Callback) {
-        create(config)
-            .load(context, callback)
+        create(config).load(context, callback)
     }
 
     override fun loadOrCache(context: Context, config: AdConfig, callback: Ad.Callback) {
@@ -48,20 +46,13 @@ object AdmobAvailabilityAd : AvailabilityAd {
         return AdManager.create(config)
     }
 
-    private fun initGoogleAds(context: Context, testIds: List<String> = arrayListOf()) {
+    private fun initGoogleAds(context: Context) {
         MobileAds.setRequestConfiguration(
             MobileAds.getRequestConfiguration().toBuilder()
                 .setTagForChildDirectedTreatment(RequestConfiguration.TAG_FOR_CHILD_DIRECTED_TREATMENT_TRUE)
                 .build()
         )
         MobileAds.initialize(context) {
-            if (AdDebug.debug) {
-                MobileAds.setRequestConfiguration(
-                    RequestConfiguration.Builder()
-                        .setTestDeviceIds(testIds)
-                        .build()
-                )
-            }
             MobileAds.setAppMuted(true)
             MobileAds.getInitializationStatus()?.adapterStatusMap?.forEach { _ ->
             }

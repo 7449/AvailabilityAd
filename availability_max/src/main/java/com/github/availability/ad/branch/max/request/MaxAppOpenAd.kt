@@ -55,6 +55,10 @@ internal class MaxAppOpenAd(override val config: AdConfig) : MaxAdCompat() {
         maxAppOpenAd?.showAd()
     }
 
+    override fun show() {
+        maxAppOpenAd?.showAd()
+    }
+
     override fun destroy() {
         maxAppOpenAd?.setListener(null)
         maxAppOpenAd?.destroy()

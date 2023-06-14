@@ -1,6 +1,7 @@
 package com.github.availability.ad.branch.admob.request
 
 import android.os.Bundle
+import com.github.availability.ad.branch.admob.AdmobAvailabilityAd
 import com.github.availability.ad.debug.AdDebug
 import com.google.ads.mediation.admob.AdMobAdapter
 import com.google.android.gms.ads.AdRequest
@@ -16,7 +17,7 @@ internal val testVideoId =
 internal fun AdRequest(requestId: String): AdRequest {
     return AdRequest.Builder()
         .apply {
-            com.github.availability.ad.branch.admob.AdmobAvailabilityAd.getNetworkExtrasBundle()
+            AdmobAvailabilityAd.getNetworkExtrasBundle()
                 .forEach {
                     addNetworkExtrasBundle(it.first.javaClass, it.second)
                 }

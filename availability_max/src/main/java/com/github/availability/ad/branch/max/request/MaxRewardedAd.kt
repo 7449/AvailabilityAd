@@ -66,6 +66,10 @@ internal class MaxRewardedAd(override val config: AdConfig) : MaxAdCompat() {
         maxRewardedAd?.showAd()
     }
 
+    override fun show() {
+        maxRewardedAd?.showAd()
+    }
+
     override fun destroy() {
         maxRewardedAd?.setListener(null)
         maxRewardedAd?.destroy()

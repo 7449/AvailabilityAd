@@ -23,7 +23,7 @@ interface AvailabilityAd {
         }
     }
 
-    fun init(context: Context, testIds: List<String> = arrayListOf())
+    fun init(context: Context)
 
     fun load(context: Context, config: AdConfig, callback: Ad.Callback)
 

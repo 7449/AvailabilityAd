@@ -59,6 +59,10 @@ internal class AudienceRewardedVideoAd(override val config: AdConfig) :
         valueOrNull?.show()
     }
 
+    override fun show() {
+        valueOrNull?.show()
+    }
+
     override fun destroy() {
         val rewardedVideoAd = valueOrNull
         rewardedVideoAd?.unregisterAdCompanionView()

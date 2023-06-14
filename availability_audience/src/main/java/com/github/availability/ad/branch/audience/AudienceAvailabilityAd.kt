@@ -13,8 +13,8 @@ import com.github.availability.ad.debug.AdDebug
 
 object AudienceAvailabilityAd : AvailabilityAd {
 
-    override fun init(context: Context, testIds: List<String>) {
-        initialize(context, testIds)
+    override fun init(context: Context) {
+        initialize(context)
     }
 
     override fun load(context: Context, config: AdConfig, callback: Ad.Callback) {
@@ -34,11 +34,10 @@ object AudienceAvailabilityAd : AvailabilityAd {
         return AdManager.create(config)
     }
 
-    private fun initialize(context: Context, testIds: List<String>) {
+    private fun initialize(context: Context) {
         if (!AudienceNetworkAds.isInitialized(context)) {
             if (AdDebug.debug) {
                 AdSettings.turnOnSDKDebugger(context)
-                AdSettings.addTestDevices(testIds)
             } else {
                 AdSettings.setDataProcessingOptions(arrayOf("LDU"), 1, 1000)
             }
