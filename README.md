@@ -50,6 +50,14 @@
 6. 获取加载时间时`Ad`调用`latencyMillis`即可
 7. 一般广告如果不及时替换会造成重复点击,可根据`Ad.repeatedlyClick`判断是否为重复点击
 
+#### 回调
+
+1. 命名基本和`Admob`对齐
+2. `Audience`的`paidEvent`固定返回`USD`,`3`
+3. `激励广告`触发`onRewarded`,`Audience`默认返回`空字符串`和`0`
+4. 插屏回调只返回点击,关闭,展示失败,展示成功四个回调
+5. 具体可见`SimpleAdCallback`
+
 ## 示例
 
 #### 加载
