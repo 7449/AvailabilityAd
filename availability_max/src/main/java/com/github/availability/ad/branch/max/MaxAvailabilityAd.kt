@@ -22,7 +22,7 @@ object MaxAvailabilityAd : AvailabilityAd {
     }
 
     override fun loadOrCache(context: Context, config: AdConfig, callback: Ad.Callback) {
-        val cache = AdCache.getCache(config.cacheKey())
+        val cache = AdCache.getCacheAndRemove(config.cacheKey())
         if (cache == null) {
             load(context, config, callback)
         } else {

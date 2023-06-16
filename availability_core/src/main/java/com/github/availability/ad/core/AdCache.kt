@@ -21,6 +21,7 @@ object AdCache {
         return adCaches.remove(key)
     }
 
+    @Deprecated("@see getCacheAndRemove(key)")
     @JvmStatic
     @Synchronized
     fun getCache(key: String): Ad? {
