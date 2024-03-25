@@ -1,17 +1,17 @@
 android {
-    compileSdk 33
+    compileSdk libs.versions.compileSdk.get().toInteger()
     defaultConfig {
-        minSdk 21
-        targetSdk 33
-        versionCode 1
-        versionName "1.0"
+        minSdk libs.versions.minSdk.get().toInteger()
+        targetSdk libs.versions.targetSdk.get().toInteger()
+        versionCode libs.versions.versionCode.get().toInteger()
+        versionName libs.versions.versionName.get()
     }
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_17
         targetCompatibility = JavaVersion.VERSION_17
     }
     kotlin {
-        jvmToolchain(17)
+        jvmToolchain(libs.versions.jvmTarget.get().toInteger())
     }
     viewBinding {
         enabled = true
@@ -28,7 +28,7 @@ android {
     }
 }
 dependencies {
-    implementation rootProject.ext.appcompat
-    implementation rootProject.ext.material
-    debugImplementation rootProject.ext.leakcanary
+    implementation libs.appcompat
+    implementation libs.material
+    debugImplementation libs.leakcanary
 }

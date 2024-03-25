@@ -1,0 +1,36 @@
+[versions]
+
+compileSdk = "34"
+targetSdk = "34"
+versionCode = "1"
+versionName = "1.0.0"
+minSdk = "23"
+jvmTarget = "17"
+
+android = "8.3.1"
+kotlin = "1.9.23"
+
+[plugins]
+
+#https://maven.google.com/web/index.html#com.android.application:com.android.application.gradle.plugin
+android-application = { id = "com.android.application", version.ref = "android" }
+#https://maven.google.com/web/index.html#com.android.library:com.android.library.gradle.plugin
+android-library = { id = "com.android.library", version.ref = "android" }
+#https://central.sonatype.com/search?q=org.jetbrains.kotlin.android
+android-kotlin = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
+
+[libraries]
+
+#https://maven.google.com/web/index.html#androidx.appcompat:appcompat
+appcompat = "androidx.appcompat:appcompat:1.6.1"
+#https://maven.google.com/web/index.html#com.google.android.material:material
+material = "com.google.android.material:material:1.11.0"
+
+#https://central.sonatype.com/artifact/com.squareup.leakcanary/leakcanary-android/versions
+leakcanary = "com.squareup.leakcanary:leakcanary-android:3.0-alpha-1"
+#https://maven.google.com/web/index.html#com.google.android.gms:play-services-ads
+admob = "com.google.android.gms:play-services-ads:23.0.0"
+#https://central.sonatype.com/artifact/com.facebook.android/audience-network-sdk/versions
+audience = "com.facebook.android:audience-network-sdk:6.16.0"
+#https://central.sonatype.com/artifact/com.applovin/applovin-sdk/versions
+max = "com.applovin:applovin-sdk:12.3.1"
