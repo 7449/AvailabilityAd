@@ -15,11 +15,6 @@
             </intent-filter>
         </activity>
         <activity android:name=".AdMaxSampleActivity" />
-
-        <meta-data
-            android:name="applovin.sdk.key"
-            android:value="0GFzWuEbATOdwK224DCCGi52bXKBtzTA8oLqVxGzAQ5Zu6DEGpFz9Ueva1IGuQUeaTNRi0PdIun5JtTfdbOmUw" />
-
     </application>
 
 </manifest>

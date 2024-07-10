@@ -1,9 +1,6 @@
 package com.github.availability.ad.branch.max
 
 import android.content.Context
-import com.applovin.sdk.AppLovinMediationProvider
-import com.applovin.sdk.AppLovinPrivacySettings
-import com.applovin.sdk.AppLovinSdk
 import com.github.availability.ad.AvailabilityAd
 import com.github.availability.ad.branch.max.request.AdManager
 import com.github.availability.ad.config.AdConfig
@@ -14,7 +11,10 @@ import com.github.availability.ad.core.AdCache
 object MaxAvailabilityAd : AvailabilityAd {
 
     override fun init(context: Context) {
-        initMaxAds(context)
+//        throw UnsupportedOperationException(
+//            "init() is not supported in MaxAvailabilityAd. " +
+//                    "@See https://developers.applovin.com/en/android/overview/new-sdk-initialization-api"
+//        )
     }
 
     override fun load(context: Context, config: AdConfig, callback: Ad.Callback) {
@@ -32,15 +32,6 @@ object MaxAvailabilityAd : AvailabilityAd {
 
     override fun create(config: AdConfig): Ad {
         return AdManager.create(config)
-    }
-
-    private fun initMaxAds(context: Context) {
-        AppLovinSdk.getInstance(context).mediationProvider = AppLovinMediationProvider.MAX
-        AppLovinPrivacySettings.setHasUserConsent(false, context)
-        AppLovinPrivacySettings.setIsAgeRestrictedUser(false, context)
-        AppLovinPrivacySettings.setDoNotSell(true, context)
-        AppLovinSdk.getInstance(context).initializeSdk {
-        }
     }
 
 }

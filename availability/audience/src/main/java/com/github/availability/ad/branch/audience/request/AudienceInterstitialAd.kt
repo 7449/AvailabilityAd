@@ -63,7 +63,6 @@ internal class AudienceInterstitialAd(override val config: AdConfig) :
 
     override fun destroy() {
         val interstitialAd = valueOrNull
-        interstitialAd?.unregisterAdCompanionView()
         interstitialAd?.destroy()
         super.destroy()
     }

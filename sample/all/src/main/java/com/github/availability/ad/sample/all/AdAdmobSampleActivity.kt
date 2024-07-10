@@ -23,7 +23,7 @@ class AdAdmobSampleActivity : AvailabilityAdActivity() {
     override val rewardedVideoConfig
         get() = SimpleAdConfig.noCache(ADMOB_REWARDED_ID, AdType.Interstitial)
     override val rewardedInterstitialConfig
-        get() = SimpleAdConfig.noCache(ADMOB_REWARDED_INTERSTITIAL_ID, AdType.Interstitial)
+        get() = SimpleAdConfig.noCache(ADMOB_REWARDED_INTERSTITIAL_ID, AdType.RewardedInterstitial)
     override val nativeConfig
         get() = SimpleAdConfig.successful(ADMOB_NATIVE_ID, AdType.Native, cacheMillis)
     override val interstitialConfig

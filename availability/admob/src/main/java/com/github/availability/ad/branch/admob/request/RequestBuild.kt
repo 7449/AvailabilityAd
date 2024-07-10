@@ -19,13 +19,15 @@ internal fun AdRequest(requestId: String): AdRequest {
         .apply {
             AdmobAvailabilityAd.getNetworkExtrasBundle()
                 .forEach {
-                    addNetworkExtrasBundle(it.first.javaClass, it.second)
+                    addNetworkExtrasBundle(it.first, it.second)
                 }
             if (AdLog.show && testVideoId.contains(requestId)) {
                 addNetworkExtrasBundle(AdMobAdapter::class.java, Bundle().apply {
                     putString("ft_ctype", "video_app_install")
                 })
             }
+
+
         }
         .build()
 }

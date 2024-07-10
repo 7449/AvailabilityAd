@@ -16,19 +16,29 @@ android {
     viewBinding {
         enabled = true
     }
+    signingConfigs {
+        release {
+            storeFile = file("$rootDir/gradle/script/sample.jks")
+            storePassword = "123456"
+            keyAlias = "release"
+            keyPassword = "123456"
+        }
+    }
     buildTypes {
         debug {
+            signingConfig signingConfigs.release
             minifyEnabled false
             shrinkResources false
         }
         release {
-            minifyEnabled true
-            shrinkResources true
+            signingConfig signingConfigs.release
+            minifyEnabled false
+            shrinkResources false
         }
     }
 }
 dependencies {
     implementation libs.appcompat
     implementation libs.material
-    debugImplementation libs.leakcanary
+//    debugImplementation libs.leakcanary
 }

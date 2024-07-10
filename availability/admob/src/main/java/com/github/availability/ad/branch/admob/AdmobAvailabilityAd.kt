@@ -14,14 +14,14 @@ import com.google.android.gms.ads.mediation.MediationExtrasReceiver
 
 object AdmobAvailabilityAd : AvailabilityAd {
 
-    private val networkExtrasBundles: MutableList<Pair<MediationExtrasReceiver, Bundle>> =
+    private val networkExtrasBundles: MutableList<Pair<Class<out MediationExtrasReceiver>, Bundle>> =
         arrayListOf()
 
-    fun addNetworkExtrasBundle(extras: MutableList<Pair<MediationExtrasReceiver, Bundle>>) {
+    fun addNetworkExtrasBundle(extras: MutableList<Pair<Class<out MediationExtrasReceiver>, Bundle>>) {
         networkExtrasBundles.addAll(extras)
     }
 
-    fun getNetworkExtrasBundle(): MutableList<Pair<MediationExtrasReceiver, Bundle>> {
+    fun getNetworkExtrasBundle(): MutableList<Pair<Class<out MediationExtrasReceiver>, Bundle>> {
         return networkExtrasBundles
     }
 

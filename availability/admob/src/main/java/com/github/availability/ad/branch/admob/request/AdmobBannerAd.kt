@@ -32,7 +32,7 @@ internal class AdmobBannerAd(override val config: AdConfig) : AdmobAdCompat<AdVi
     override fun load(context: Context, callback: Ad.Callback) {
         super.load(context, callback)
         val adSize = if (config is AdmobAdConfig) config.bannerSize else AdSize.BANNER
-        val adView = AdView(context.applicationContext)
+        val adView = AdView(context)
         adView.setAdSize(adSize)
         adView.adUnitId = config.id
         adView.loadAd(AdRequest(config.id))
