@@ -7,8 +7,8 @@ versionName = "1.0.0"
 minSdk = "23"
 jvmTarget = "17"
 
-android = "8.5.0"
-kotlin = "2.0.0"
+android = "8.5.2"
+kotlin = "2.0.20"
 
 [plugins]
 
@@ -22,15 +22,15 @@ android-kotlin = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 [libraries]
 
 #https://maven.google.com/web/index.html#androidx.appcompat:appcompat
-appcompat = "androidx.appcompat:appcompat:1.7.0"
+androidx-appcompat = "androidx.appcompat:appcompat:1.7.0"
 #https://maven.google.com/web/index.html#com.google.android.material:material
-material = "com.google.android.material:material:1.12.0"
+google-material = "com.google.android.material:material:1.12.0"
 
 #https://central.sonatype.com/artifact/com.squareup.leakcanary/leakcanary-android/versions
-leakcanary = "com.squareup.leakcanary:leakcanary-android:3.0-alpha-1"
+squareup-leakcanary = "com.squareup.leakcanary:leakcanary-android:3.0-alpha-8"
 #https://maven.google.com/web/index.html#com.google.android.gms:play-services-ads
-admob = "com.google.android.gms:play-services-ads:23.2.0"
+google-admob = "com.google.android.gms:play-services-ads:23.3.0"
 #https://central.sonatype.com/artifact/com.facebook.android/audience-network-sdk/versions
-audience = "com.facebook.android:audience-network-sdk:6.17.0"
+facebook-audience = "com.facebook.android:audience-network-sdk:6.17.0"
 #https://central.sonatype.com/artifact/com.applovin/applovin-sdk/versions
-max = "com.applovin:applovin-sdk:12.5.0"
+applovin-max = "com.applovin:applovin-sdk:12.6.1"

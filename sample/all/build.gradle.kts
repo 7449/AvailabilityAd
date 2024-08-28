@@ -13,7 +13,7 @@ dependencies {
     implementation(project(":availability:admob"))
     implementation(project(":availability:audience"))
     implementation(project(":sample:base"))
-    implementation(libs.admob)
-    implementation(libs.audience)
-    implementation(libs.max)
+    implementation(libs.google.admob)
+    implementation(libs.facebook.audience)
+    implementation(libs.applovin.max)
 }

@@ -10,5 +10,5 @@ dependencies {
     implementation(project(":sample:base"))
     implementation(project(":availability:admob"))
     implementation(project(":availability:core"))
-    implementation(libs.admob)
+    implementation(libs.google.admob)
 }

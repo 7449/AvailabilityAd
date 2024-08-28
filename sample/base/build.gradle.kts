@@ -10,8 +10,8 @@ android {
         testOptions.targetSdk = libs.versions.targetSdk.get().toInt()
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_17
-        targetCompatibility = JavaVersion.VERSION_17
+        sourceCompatibility = JavaVersion.toVersion(libs.versions.jvmTarget.get())
+        targetCompatibility = JavaVersion.toVersion(libs.versions.jvmTarget.get())
     }
     kotlin {
         jvmToolchain(libs.versions.jvmTarget.get().toInt())
@@ -19,6 +19,6 @@ android {
 }
 dependencies {
     implementation(project(":availability:core"))
-    implementation(libs.appcompat)
-    implementation(libs.material)
+    implementation(libs.androidx.appcompat)
+    implementation(libs.google.material)
 }

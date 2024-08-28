@@ -11,5 +11,5 @@ dependencies {
     implementation(project(":sample:base"))
     implementation(project(":availability:audience"))
     implementation(project(":availability:core"))
-    implementation(libs.audience)
+    implementation(libs.facebook.audience)
 }

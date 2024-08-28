@@ -8,5 +8,5 @@ android {
 }
 dependencies {
     compileOnly(project(":availability:core"))
-    compileOnly(libs.admob)
+    compileOnly(libs.google.admob)
 }

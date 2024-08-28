@@ -10,5 +10,5 @@ dependencies {
     implementation(project(":sample:base"))
     implementation(project(":availability:max"))
     implementation(project(":availability:core"))
-    implementation(libs.max)
+    implementation(libs.applovin.max)
 }
