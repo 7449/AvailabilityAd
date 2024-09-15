@@ -7,7 +7,7 @@ versionName = "1.0.0"
 minSdk = "23"
 jvmTarget = "17"
 
-android = "8.5.2"
+android = "8.6.0"
 kotlin = "2.0.20"
 
 [plugins]
