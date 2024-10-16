@@ -26,12 +26,4 @@ internal open class SimpleMaxRewardedAdListener : MaxRewardedAdListener {
 
     override fun onUserRewarded(ad: MaxAd, reward: MaxReward) {
     }
-
-    @Deprecated("Deprecated in Java")
-    override fun onRewardedVideoStarted(ad: MaxAd) {
-    }
-
-    @Deprecated("Deprecated in Java")
-    override fun onRewardedVideoCompleted(ad: MaxAd) {
-    }
 }
